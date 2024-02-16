@@ -1,6 +1,6 @@
 # DeFiChain Atomic Swap Guide
 
-# Guide to Atomic Swaps on DeFiChain
+
 
 This guide aims to provide a comprehensive, step-by-step walkthrough for users looking to perform Atomic Swaps on DeFiChain. By following this guide, you'll be able to leverage DeFiChain to perform token swaps across dfferent blockchains.
 
