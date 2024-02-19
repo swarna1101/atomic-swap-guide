@@ -4,17 +4,19 @@
 
 This guide aims to provide a comprehensive, step-by-step walkthrough for users looking to perform Atomic Swaps on DeFiChain. By following this guide, you'll be able to leverage DeFiChain to perform token swaps across dfferent blockchains.
 
+* **Warning**: ICX and Atomic Swap are experimental features. You might end up losing your funds. USE IT AT YOUR OWN RISK.
+
 ## What is DeFiChain Atomic Swap?
 
 Atomic Swaps are a feature of DeFiChain that allows for the trustless and decentralized exchange of cryptocurrencies between two different blockchains. This is achieved without the need for intermediaries.
 
-With Atomic Swaps, DeFiChain users can exchange bitcoin, represented on the DeFiChain blockchain as DBTC (a DeFi Asset Token backed by bitcoin), for actual bitcoins on the Bitcoin blockchain. This is done directly in the DeFiChain app, eliminating the need for middlemen (such as a DEX) or centralized institutions.
+With Atomic Swaps, DeFiChain users can exchange bitcoin, represented on the DeFiChain blockchain as dBTC (a DeFi Asset Token backed by bitcoin), for actual bitcoins on the Bitcoin blockchain. This is done directly in the DeFiChain app, eliminating the need for middlemen (such as a DEX) or centralized institutions.
 
 This feature enhances the liquidity of all assets on DeFiChain, as they can be easily moved between DeFiChain and other blockchains.
 
 ## Getting Started
 
-To get started with Atomic Swaps on DeFiChain, you need to have a DeFiChain wallet as well as the [DeFiChain Desktop Full-Node Wallet](https://defichain.com/explore/wallets) app.
+To get started with Atomic Swaps on DeFiChain, you need to have the [DeFiChain Desktop Full-Node Wallet](https://defichain.com/explore/wallets) app.
 
 You will also need a crypto wallet containing the tokens you wish to perform the swap with.
 
@@ -29,7 +31,7 @@ You will also need a crypto wallet containing the tokens you wish to perform the
 
 To exchange BTC for DFI, you need to pay 0.3% of the BTC amount in fees. This is to be paid in DFI.
 
-Fees are pain in DFI, while transaction fees are paid in UTXO DFI.
+Fees are paid in DFI, while transaction fees are paid in UTXO DFI.
 
 ## How to exchange BTC for DFI via an Atomic Swap
 
@@ -314,6 +316,6 @@ Once the transaction is mined, you will receive your dBTC in your wallet.
 Once you receive your dBTC you may now exchange them for BTC. This can be done using the DeFiChain Desktop wallet's GUI.
 (Need GUI access to elaborate here)
 
-#### Footnote
 
-* **Warning**: ICX and Atomic Swap are experimental features. You might end up losing your funds. USE IT AT YOUR OWN RISK.
+
+
