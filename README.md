@@ -1,22 +1,18 @@
-# DeFiChain Atomic Swap Guide
-
-
+# Guide to Atomic Swaps on DeFiChain
 
 This guide aims to provide a comprehensive, step-by-step walkthrough for users looking to perform Atomic Swaps on DeFiChain. By following this guide, you'll be able to leverage DeFiChain to perform token swaps across dfferent blockchains.
-
-* **Warning**: ICX and Atomic Swap are experimental features. You might end up losing your funds. USE IT AT YOUR OWN RISK.
 
 ## What is DeFiChain Atomic Swap?
 
 Atomic Swaps are a feature of DeFiChain that allows for the trustless and decentralized exchange of cryptocurrencies between two different blockchains. This is achieved without the need for intermediaries.
 
-With Atomic Swaps, DeFiChain users can exchange bitcoin, represented on the DeFiChain blockchain as dBTC (a DeFi Asset Token backed by bitcoin), for actual bitcoins on the Bitcoin blockchain. This is done directly in the DeFiChain app, eliminating the need for middlemen (such as a DEX) or centralized institutions.
+With Atomic Swaps, DeFiChain users can exchange bitcoin, represented on the DeFiChain blockchain as DBTC (a DeFi Asset Token backed by bitcoin), for actual bitcoins on the Bitcoin blockchain. This is done directly in the DeFiChain app, eliminating the need for middlemen (such as a DEX) or centralized institutions.
 
 This feature enhances the liquidity of all assets on DeFiChain, as they can be easily moved between DeFiChain and other blockchains.
 
 ## Getting Started
 
-To get started with Atomic Swaps on DeFiChain, you need to have the [DeFiChain Desktop Full-Node Wallet](https://defichain.com/explore/wallets) app.
+To get started with Atomic Swaps on DeFiChain, you need to have a DeFiChain wallet as well as the [DeFiChain Desktop Full-Node Wallet](https://defichain.com/explore/wallets) app.
 
 You will also need a crypto wallet containing the tokens you wish to perform the swap with.
 
@@ -31,13 +27,13 @@ You will also need a crypto wallet containing the tokens you wish to perform the
 
 To exchange BTC for DFI, you need to pay 0.3% of the BTC amount in fees. This is to be paid in DFI.
 
-Fees are paid in DFI, while transaction fees are paid in UTXO DFI.
+Fees are pain in DFI, while transaction fees are paid in UTXO DFI.
 
 ## How to exchange BTC for DFI via an Atomic Swap
 
 Here's a detailed guide on how to use DeFiChain's Atomic Swap feature to exchange BTC for DFI.
 
-### Step 1: Access your wallet via the DeFiChain Desktop Full-Node Wallet app
+### <a id="step1" style="text-decoration:none; color:inherit;"> Step 1: Access your wallet via the DeFiChain Desktop Full-Node Wallet app
 
 To perform Atomic Swaps, you first need to download and install the [DeFiChain Desktop Full-Node Wallet](https://defichain.com/explore/wallets) app for your operating system.
 
@@ -45,15 +41,15 @@ Once installed and running, access your exisitng DeFiChain wallet in the app usi
 
 You may open a new wallet if you do not already have one.
 
-### Step 2: Fund BTC wallet on the DeFiChain Desktop Full-Node Wallet app
+### <a id="step2" style="text-decoration:none; color:inherit;"> Step 2: Fund BTC wallet on the DeFiChain Desktop Full-Node Wallet app
 
 Since we're converting bitcoin to DFI we need to fund a BTC wallet with at least the desired amount of coins to be converted.
 
 You may fund the DeFiChain Desktop Full-Node Wallet app's inbuilt Bitcoin Wallet for convenience.
 
-![Fund with btc](/assets/img_2.png)
+![Fund with btc](<image (4).png>)
 
-### Step 3: Check for Maker orders via the inbuilt Command-line Interface (CLI)
+### <a id="step3" style="text-decoration:none; color:inherit;"> Step 3: Check for Maker orders via the inbuilt Command-line Interface (CLI)
 
 To begin the swap process, you need to first check for open "Maker" orders.
 
@@ -86,7 +82,8 @@ defi-cli icx_listorders
   }
 }
 ```
-![Click CLI icon](/assets/img_1.png)
+
+![Click CLI icon](<image (3).png>)
 
 To exchange BTC for DFI, you need an order with the following parameters:
 
@@ -98,9 +95,9 @@ To exchange BTC for DFI, you need an order with the following parameters:
 * Take note of the `receivePubkey` and `ownerAddress` parameters.
 * Also take note of the `orderTx`, in this case `fe87484fd39b7f66eb8214df811ddbaaf3b934219c9452af2cf09fdc3b065c1b`.
 
-### Step 4: Obtain your Bitcoin `receivePubkey`
+### <a id="step4" style="text-decoration:none; color:inherit;"> Step 4: Obtain your Bitcoin `receivePubkey`
 
-Obtain your Bitcoin wallet's pubKey hash (not address), which will be required in the next step. Run:
+Obtain your your Bitcoin wallet's pubKey hash (not address), which will be required in the next step. Run:
 
 ```bash
 defi-cli spv_getaddresspubkey <BTC_ADDRESS>
@@ -118,7 +115,7 @@ defi-cli spv_getaddresspubkey <BTC_ADDRESS>
 
 Take note of the output value, which is your `receivePubkey`.
 
-### <a name="step5">Step 5: Make an Offer</a>
+### <a id="step5" style="text-decoration:none; color:inherit;"> Step 5: Make an Offer</a>
 
 Now you must make an offer to your preferred order, which the Maker of the order will then choose to accept or not.
 
@@ -130,11 +127,11 @@ icx_makeoffer '{"orderTx":"fe87484fd39b7f66eb8214df811ddbaaf3b934219c9452af2cf09
 
 **Parameters:**
 
-* `orderTx` is the id of the order from the **Step 3** output.
+* `orderTx` is the id of the order from the **[Step 3](#step3)**'s output.
 * `amount` is the amount of tokens you wish to swap.
 * `ownerAddress` is your DFI wallet address.
 * `expiry` is the amount of time in minutes before the offer expires.
-* `receivePubkey` is your Bitcoin wallet's pubKey from **Step 4** output.
+* `receivePubkey` is your Bitcoin wallet's pubKey from **[Step 4](#step4)**'s output.
 
 **Example output:**
 
@@ -144,7 +141,7 @@ icx_makeoffer '{"orderTx":"fe87484fd39b7f66eb8214df811ddbaaf3b934219c9452af2cf09
 
 Take note of the returned `txid`, which is the id for your new offer.
 
-### Step 6: Check if Maker accepts Offer
+### <a id="step6" style="text-decoration:none; color:inherit;"> Step 6: Check if Maker accepts Offer
 
 After a few minutes, check if your offer has been accepted by the Maker. To do so, run:
 
@@ -154,7 +151,7 @@ icx_listhtlcs '{"offerTx":"bb4823b1321179c99163223f53b8b22168d9430e8f71e17ab968e
 
 **Parameters**:
 
-* `offerTx`: The `txid` returned in the **Step 5** output.
+* `offerTx`: The `txid` returned in the **[Step 5](#step5)**'s output.
 
 **Example output** (if offer has been accepted):
 
@@ -183,7 +180,7 @@ If you get an empty response, it means your offer is yet to be accepted so you m
 
 Also note that the Maker may offer less than what your requested for, which means the `amount` field might be different from what was sent in the offer.
 
-### Step 7: Create a HTLC (Hashed Timelock Contract)
+### <a id="step7" style="text-decoration:none; color:inherit;"> Step 7: Create a HTLC (Hashed Timelock Contract)
 
 Now that the offer has been accepted, you need to lock your BTC in a HTLC contract. Start by creating the appropriate HTLC contract with this command:
 
@@ -193,10 +190,10 @@ spv_createhtlc 03668b5dc4f33dab92cd5b70c034a88e0d2510b14e39f3995245acb4d8723c2b3
 
 **Parameters** (separate with a space):
 
-* Param 1 : Maker’s (the one who receives the BTC) `receivePubKey` from **Step 3** output.
-* Param 2: Your `receivePubKey` from **Step 4** output. This is so that you can get a refund in case of a failed transaction.
-* Param 3: Timeout, which should be less than the `"timeout"` value from **Step 6** output and larger than 24.
-* Param 4: `hash` from the **Step 6** output.
+* Param 1 : Maker’s (the one who receives the BTC) `receivePubKey` from **[Step 3](#step3)**'s output.
+* Param 2: Your `receivePubKey` from **[Step 4](#step4)**'s output. This is so that you can get a refund in case of a failed transaction.
+* Param 3: Timeout, which should be less than the `"timeout"` value from **[Step 6](#step6)**'s output and larger than 24.
+* Param 4: `hash` from the **[Step 6](#step6)**'s output.
 
 **Note:** Ensure that each parameter is correct.
 
@@ -211,7 +208,7 @@ spv_createhtlc 03668b5dc4f33dab92cd5b70c034a88e0d2510b14e39f3995245acb4d8723c2b3
 
 Take note of the `address` parameter's value. This is your `htlcScriptAddress`.
 
-### Step 8: Fund HTLC
+### <a id="step8" style="text-decoration:none; color:inherit;"> Step 8: Fund HTLC
 
 Now you need to fund the contract you just created. To do so, run:
 
@@ -221,8 +218,8 @@ spv_sendtoaddress 2N8uZ3s3P8GECXUV6rFukdkPzruRRhy4shf 0.0001
 
 **Parameters** (separate with a space):
 
-* Param 1: `address` from **Step 6** output.
-* Param 2: `amount` from **Step 5** output.
+* Param 1: `address` from **[Step 6](#step6)**'s output.
+* Param 2: `amount` from **[Step 5](#step5)**'s output.
 
 **Example output:**
 
@@ -235,7 +232,7 @@ spv_sendtoaddress 2N8uZ3s3P8GECXUV6rFukdkPzruRRhy4shf 0.0001
 
 The `txid` in the output is the hash of the transaction, which you can use to track the transaction via any [Bitcoin blockchain explorer](https://www.blockchain.com/explorer).
 
-### Step 9: Inform DeFiChain of HTLC
+### <a id="step9" style="text-decoration:none; color:inherit;"> Step 9: Inform DeFiChain of HTLC
 
 Next step is to inform DeFiChain that the HTLC contract has been funded. Once the bitcoin transaction is successful, run:
 
@@ -245,12 +242,12 @@ icx_submitexthtlc '{"offerTx":"bb4823b1321179c99163223f53b8b22168d9430e8f71e17ab
 
 **Parameters:**
 
-* `offerTx`: From **Step 5** command.
-* `hash`: From **Step 5** output.
-* `amount`: From **Step 5** output.
-* `htlcScriptAddress`: From **Step 6** output.
-* `ownerPubKey`: Your `receivePubKey` from Step 4.
-* `timeout`: Timeout value from **Step 6** command.
+* `offerTx`: From **[Step 5](#step5)**'s command.
+* `hash`: From **[Step 5](#step5)**'s output.
+* `amount`: From **[Step 5](#step5)**'s output.
+* `htlcScriptAddress`: From **[Step 6](#step6)**'s output.
+* `ownerPubKey`: Your `receivePubKey` from **[Step 4](#step4)**.
+* `timeout`: Timeout value from **[Step 6](#step6)**'s command.
 
 **Example output:**
 
@@ -261,7 +258,7 @@ icx_submitexthtlc '{"offerTx":"bb4823b1321179c99163223f53b8b22168d9430e8f71e17ab
 }
 ```
 
-### Step 10: Check for fund claim
+### <a id="step10" style="text-decoration:none; color:inherit;"> Step 10: Check for fund claim
 
 Taker (you) now needs to check from time to time whether the Maker has claimed their btc from the contract. To check, run:
 
@@ -271,7 +268,7 @@ spv_gethtlcseed 2N8uZ3s3P8GECXUV6rFukdkPzruRRhy4shf
 
 **Parameters** (separate with a space):
 
-* Param 1: `htlcScriptAddress` from **Step 6** output.
+* Param 1: `htlcScriptAddress` from **[Step 6](#step6)**'s output.
 
 **Example output:**
 
@@ -283,7 +280,7 @@ Take note of the output, which is known as the `seed`.
 
 **Note**: If you do not get a response, then the Maker is yet to claim their bitcoin.
 
-### Step 11: Claim dBTC
+### <a id="step11" style="text-decoration:none; color:inherit;"> Step 11: Claim dBTC
 
 Once the Maker has claimed their BTC, you may now claim your dBTC tokens with the following commad:
 
@@ -293,8 +290,8 @@ icx_claimdfchtlc '{"dfchtlcTx":"2afa1a7c935548ffd6be9d550bb9c7f59da31b9a461bd6c3
 
 **Parameters:**
 
-`dfchtlcTx`: `2afa...` string that encapsulates main response from **Step 5** output; the string of numbers before `"type": "DFC"`.
-`seed`: From step 9 output.
+`dfchtlcTx`: `2afa...` string that encapsulates main response from **[Step 5](#step5)**'s output; the string of numbers before `"type": "DFC"`.
+`seed`: From **[Step 9](#step9)**'s output.
 
 **Example output:**
 
@@ -311,11 +308,11 @@ You may check your transaction on DeFiChain Testnet Explorer: <https://testnet.d
 
 Once the transaction is mined, you will receive your dBTC in your wallet.
 
-### Step 12: Exchange dBTC for BTC
+### <a id="step12" style="text-decoration:none; color:inherit;"> Step 12: Exchange dBTC for BTC
 
 Once you receive your dBTC you may now exchange them for BTC. This can be done using the DeFiChain Desktop wallet's GUI.
 (Need GUI access to elaborate here)
 
+#### Footnote
 
-
-
+* **Warning**: ICX and Atomic Swap are experimental features. You might end up losing your funds. USE IT AT YOUR OWN RISK.
